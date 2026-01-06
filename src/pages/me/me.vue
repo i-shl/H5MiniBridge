@@ -42,14 +42,6 @@ function handleLogout() {
           title: '退出登录成功',
           icon: 'success',
         })
-        // #ifdef MP-WEIXIN
-        // 微信小程序，去首页
-        // uni.reLaunch({ url: '/pages/index/index' })
-        // #endif
-        // #ifndef MP-WEIXIN
-        // 非微信小程序，去登录页
-        // uni.navigateTo({ url: LOGIN_PAGE })
-        // #endif
       }
     },
   })
@@ -60,9 +52,6 @@ function handleLogout() {
   <view class="profile-container">
     <view class="mt-3 break-all px-3 text-center text-green-500">
       {{ userInfo.username ? '已登录' : '未登录' }}
-    </view>
-    <view class="mt-3 break-all px-3">
-      {{ JSON.stringify(userInfo, null, 2) }}
     </view>
 
     <view class="mt-[60vh] px-3">

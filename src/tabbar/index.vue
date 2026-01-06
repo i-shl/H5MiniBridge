@@ -15,10 +15,7 @@ defineOptions({
  * 中间的鼓包tabbarItem的点击事件
  */
 function handleClickBulge() {
-  uni.showToast({
-    title: '点击了中间的鼓包tabbarItem',
-    icon: 'none',
-  })
+  // TODO: 实现中间鼓包按钮的点击逻辑
 }
 
 function handleClick(index: number) {
