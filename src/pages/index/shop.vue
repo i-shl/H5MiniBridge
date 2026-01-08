@@ -23,7 +23,7 @@ const envInfo = ref('mp-weixin')
 const webviewSrc = computed(() => {
   // 从tokenInfo中获取token
   let token = ''
-  token = '123456token'
+  token = '123'
   // const tokenInfo = tokenStore.tokenInfo
   // if (tokenInfo) {
   //   if (isDoubleTokenRes(tokenInfo)) {

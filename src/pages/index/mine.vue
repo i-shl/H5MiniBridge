@@ -23,7 +23,7 @@ const envInfo = ref('mp-lark')
 const webviewSrc = computed(() => {
   // 从tokenInfo中获取token
   let token = ''
-  token = '123456token'
+  token = '789'
   // const tokenInfo = tokenStore.tokenInfo
   // if (tokenInfo) {
   //   if (isDoubleTokenRes(tokenInfo)) {
