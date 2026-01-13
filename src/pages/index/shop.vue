@@ -13,7 +13,7 @@ const H5_BASE_URL = 'https://test.ishl.top'
 
 const tokenStore = useTokenStore()
 
-const currentRoute = ref('shop')
+const currentRoute = ref('demo/shop')
 const envInfo = ref('mp-weixin')
 
 const webviewSrc = computed(() => {

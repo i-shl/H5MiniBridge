@@ -13,7 +13,7 @@ const H5_BASE_URL = 'https://test.ishl.top'
 
 const tokenStore = useTokenStore()
 
-const currentRoute = ref('mine')
+const currentRoute = ref('demo/mine')
 const envInfo = ref('mp-lark')
 
 const webviewSrc = computed(() => {
