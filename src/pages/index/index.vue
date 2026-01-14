@@ -15,6 +15,13 @@ definePage({
 
 const tokenStore = useTokenStore()
 
+// 跳转到H5首页
+function navigateToH5Home() {
+  uni.navigateTo({
+    url: '/pages/index/h5-home',
+  })
+}
+
 // 跳转到商城页面
 function navigateToShop() {
   uni.navigateTo({
@@ -56,6 +63,9 @@ onMounted(() => {
 
 <template>
   <view class="home-container">
+    <button class="btn" @click="navigateToH5Home">
+      H5首页
+    </button>
     <button class="btn" @click="navigateToShop">
       商城
     </button>
