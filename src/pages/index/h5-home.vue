@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { computed, onMounted, ref } from 'vue'
-import { stringifyQuery } from '@/http/tools/queryString'
 import { useTokenStore } from '@/store'
+import { buildWebviewUrl } from '@/utils/webviewUrl'
 
 definePage({
   style: {
@@ -9,25 +9,21 @@ definePage({
   },
 })
 
-const H5_BASE_URL = 'https://test.ishl.top'
-
 const tokenStore = useTokenStore()
 
-const envInfo = ref('mp-weixin')
+const envInfo = ref<'mp-weixin' | 'mp-qiwei' | 'mp-lark'>('mp-weixin')
+const userType = ref<'sales' | 'agent' | 'staff'>('agent') // 人员类型：销售、代理、员工
 
 const webviewSrc = computed(() => {
   let token = ''
   token = '123'
 
-  const params: Record<string, string> = {}
-  params.env = envInfo.value
-  if (token) {
-    params.token = token
-  }
-  // H5首页不需要route参数，或者可以设置为空字符串
-
-  const queryString = stringifyQuery(params)
-  return `${H5_BASE_URL}${queryString ? `?${queryString}` : ''}`
+  return buildWebviewUrl({
+    env: envInfo.value,
+    token: token || undefined,
+    // H5首页不需要route参数
+    userType: userType.value,
+  })
 })
 
 function handleMessage(event: any) {

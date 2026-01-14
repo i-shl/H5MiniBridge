@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { computed, onMounted, ref } from 'vue'
-import { stringifyQuery } from '@/http/tools/queryString'
 import { useTokenStore } from '@/store'
+import { buildWebviewUrl } from '@/utils/webviewUrl'
 
 definePage({
   style: {
@@ -9,28 +9,22 @@ definePage({
   },
 })
 
-const H5_BASE_URL = 'https://test.ishl.top'
-
 const tokenStore = useTokenStore()
 
 const currentRoute = ref('demo/mine')
-const envInfo = ref('mp-lark')
+const envInfo = ref<'mp-weixin' | 'mp-qiwei' | 'mp-lark'>('mp-lark')
+const userType = ref<'sales' | 'agent' | 'staff'>('staff') // 人员类型：销售、代理、员工
 
 const webviewSrc = computed(() => {
   let token = ''
   token = '789'
 
-  const params: Record<string, string> = {}
-  params.env = envInfo.value
-  if (token) {
-    params.token = token
-  }
-  if (currentRoute.value) {
-    params.route = currentRoute.value
-  }
-
-  const queryString = stringifyQuery(params)
-  return `${H5_BASE_URL}${queryString ? `?${queryString}` : ''}`
+  return buildWebviewUrl({
+    env: envInfo.value,
+    token: token || undefined,
+    route: currentRoute.value || undefined,
+    userType: userType.value,
+  })
 })
 
 function handleMessage(event: any) {
